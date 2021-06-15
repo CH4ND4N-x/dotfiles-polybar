@@ -33,5 +33,5 @@ Add the launch.sh script to your startup file
 $ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 ```
 ### NOTE
-if some random module is not working, better check module interface
-or simply ping me. Wallpaper is there in screenshot folder
+- if some random module is not working, better check module interface or simply ping me. Wallpaper is there in screenshot folder
+- For i3, alacritty, picom , networkmanager-dmenu-git configs check [watch this repo](https://github.com/CH4ND4N-x/i3-backup.git)
