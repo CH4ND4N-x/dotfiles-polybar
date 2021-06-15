@@ -1,0 +1,416 @@
+[bar]
+fill = 
+empty = ⏽
+indicator = 
+
+[module/xbacklight]
+type = internal/xbacklight
+format = <label><bar>
+label =  %percentage%%
+label-background = ${colors.backlight}
+label-foreground = ${colors.black}
+label-padding = 2
+
+bar-width = 10
+bar-indicator = ${bar.indicator}
+bar-indicator-foreground = ${colors.black}
+bar-indicator-background = ${colors.white}
+bar-indicator-font = 4
+
+bar-fill = ${bar.fill}
+bar-fill-font = 2
+bar-fill-foreground = ${colors.primary}
+bar-fill-background = ${colors.white}
+
+bar-empty = ${bar.empty}
+bar-empty-font = 2
+bar-empty-background = ${colors.white}
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+enable-scroll = true
+
+[module/wlan]
+type = internal/network
+interface = wlo1
+interval = 1.0
+;accumulate-stats = true
+unknown-as-up = true
+
+format-connected = <label-connected>
+format-connected-background = ${colors.white}
+format-connected-foreground = ${colors.black}
+format-connected-prefix = 
+format-connected-prefix-padding = 2
+format-connected-prefix-background = ${colors.network}
+format-connected-prefix-foreground = ${colors.black}
+label-connected = "%{A1:networkmanager_dmenu &:}%essid% %{A}"
+label-connected-padding = 2
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${colors.white}
+format-disconnected-foreground = ${colors.black}
+format-disconnected-prefix = 睊
+format-disconnected-prefix-background = ${colors.network}
+format-disconnected-prefix-foreground = ${colors.black}
+format-disconnected-prefix-padding = 2
+label-disconnected = "%{A1:networkmanager_dmenu &:} Offline %{A}"
+label-discoonected-padding = 2
+
+[module/eth]
+type = internal/network
+interface = ${env:DEFAULT_NETWORK_INTERFACE}
+
+unknown-as-up = true
+
+interval = 3.0
+format-connected = <label-connected>
+format-connected-prefix =  
+format-connected-prefix-background = ${colors.eth}
+format-connected-prefix-foreground = ${colors.black}
+format-connected-prefix-padding = 2
+label-connected = %ifname%
+label-connected-background = ${colors.white}
+label-connected-foreground = ${colors.black}
+label-connected-padding = 2
+
+format-disconnected = <label-disconnected>
+format-disconnected-prefix = " "
+format-disconnected-prefix-background = ${colors.eth}
+format-disconnected-prefix-foreground = ${colors.black}
+format-disconnected-prefix-padding = 2
+label-disconnected = Offline
+label-disconnected-background = ${colors.white}
+label-disconnected-foreground = ${colors.black}
+label-disconnected-padding = 2
+[module/i3]
+type = internal/i3
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+;ws-icon-default = 
+
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+;Only show workspaces on the same output as the bar
+;pin-workspaces = true
+;label-mode = %mode%
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.workspace}
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+label-unfocused-background = ${colors.background}
+; focused = Active workspace on focused monitor
+label-focused = 
+;label-focused-underline= ${colors.workspace}
+label-focused-background = ${colors.white}
+label-focused-foreground = ${colors.workspace}
+label-focused-padding = 2
+
+;urgent = Workspace with urgency hint set
+label-urgent = %icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+;label-separator = |
+;label-separator-foreground = ${colors.black}
+;label-seprator-padding = 1
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+use-ui-max = false
+
+format-volume = <label-volume><bar-volume>
+label-volume =  %percentage%%
+label-volume-foreground = ${colors.black}
+label-volume-background = ${colors.primary}
+label-volume-padding = 2
+
+format-muted = <label-muted>
+format-muted-prefix = 婢
+format-muted-prefix-background = ${colors.primary}
+format-muted-prefix-foreground = ${colors.black}
+format-muted-prefix-padding = 2
+label-muted = Muted
+label-muted-foreground = ${colors.black}
+label-muted-background = ${colors.white}
+label-muted-padding = 2
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+
+bar-volume-gradient = false
+bar-volume-indicator = ${bar.indicator}
+bar-volume-indicator-font = 2
+bar-volume-indicator-background = ${colors.white}
+bar-volume-indicator-foreground = ${colors.black}
+
+bar-volume-fill = ${bar.fill}
+bar-volume-fill-font = 2
+bar-volume-fill-background = ${colors.white}
+
+bar-volume-empty = ${bar.empty}
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-background = ${colors.white}
+
+click-right = exec pavucontrol
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 98
+
+format-charging = <animation-charging><label-charging>
+label-charging-background = ${colors.white}
+label-charging-foreground= ${colors.black}
+label-charging-padding = 2
+
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging-foreground = ${self.label-charging-foreground}
+label-discharging-background = ${self.label-charging-background}
+label-discharging-padding = 2
+
+format-full =<label-full>
+label-full = 100%
+label-full-background = ${colors.white}
+label-full-foreground = ${colors.black}
+label-full-padding = 2
+format-full-prefix = 
+format-full-prefix-padding = 2
+format-full-prefix-background = ${colors.battery}
+format-full-prefix-foreground = ${colors.white}
+
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.black}
+ramp-capacity-background = ${colors.battery}
+ramp-capacity-padding = 2
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.black}
+animation-charging-background = ${colors.battery}
+animation-charging-padding = 2
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 69
+
+format = <ramp><label>
+format-warn = <ramp> <label-warn>
+
+label = %temperature-c%
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 2
+label-warn =%temperature-c%
+label-warn-background = ${colors.alert}
+label-warn-foreground = ${colors.black}
+label-warn-padding = 2
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.black}
+ramp-background = ${colors.temperature}
+ramp-padding = 2
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+format-spacing = 1
+label-open = 
+label-open-padding = 2
+label-open-background = ${colors.power}
+label-open-foreground = ${colors.black}
+label-close = 
+label-close-foreground = ${colors.black}
+label-close-background = ${colors.power}
+label-close-padding = 2
+label-separator = |
+label-separator-foreground = ${colors.power}
+
+menu-0-0 =  reboot
+menu-0-0-exec = systemctl reboot
+menu-0-1 =  power off
+menu-0-1-exec = systemctl poweroff
+menu-0-0-underline = ${colors.power}
+menu-0-1-underline = ${colors.power}
+
+[module/launcher]
+type = custom/text
+content = 
+;content" has the same properties as "format-NAME"
+content-background = ${colors.launcher}
+content-foreground = ${colors.black}
+content-padding = 2
+;click-(left|middle|right)" will be executed using "/usr/bin/env sh -c $CO>
+click-left = ~/.config/polybar/scripts/launcher.sh &
+
+
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+format-prefix = 
+format-prefix-background = ${colors.xwindow}
+format-prefix-foreground = ${colors.black}
+format-prefix-padding = 2
+
+label = %title:0:30:...%
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 2
+label-empty = "Desktop"
+label-empty-background = ${colors.white}
+label-empty-foreground = ${colors.black}
+label-empty-padding = 2
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+format-mounted = <label-mounted>
+format-mounted-prefix = "  "
+format-mounted-prefix-foreground = ${colors.date}
+mount-0 = /home
+mount-1 = /
+label-mounted =  %mountpoint% : %percentage_used%%
+format-mounted-underline = ${colors.date}
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = 
+format-prefix-background = ${colors.cpu}
+format-prefix-foreground = ${colors.black}
+format-prefix-padding = 2
+label = %percentage:2%%
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 2
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.memory}
+format-underline = ${colors.memory}
+label = %percentage_used%%
+
+
+[module/date]
+type = internal/date
+interval = 5
+
+time = " %I:%M %p"
+time-alt = " %a, %d %b %Y"
+
+format = <label>
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 2
+format-prefix = 
+format-prefix-padding = 2
+format-prefix-foreground = ${colors.black}
+format-prefix-background = ${colors.date}
+label =%time%
+
+[module/sep]
+type = custom/text
+content = "|"
+content-foregoround = ${colors.secondary} 
+
+
+[module/music]
+type = custom/script
+tail = true
+
+format = <label>
+format-prefix = " "
+format-underline = ${colors.primary}
+format-prefix-foreground = ${colors.primary}
+exec = /home/chandan/.config/polybar/scripts/music
+

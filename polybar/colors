@@ -1,0 +1,22 @@
+[colors]
+background = #00000000
+background-alt = #00897b
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #ff0000
+network = #ff6666
+eth = #b614ff
+memory= #4bffdc
+cpu = #ff69b4
+battery = #11ad45
+temperature = #ffa700
+date = #d2de40
+power = #00dbdd
+launcher = #ff7d7d
+backlight = #5f9ea0
+workspace = #493267
+white = #f5f5f5
+black = #000000
+xwindow = #2fff00
