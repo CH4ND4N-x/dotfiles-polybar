@@ -37,7 +37,7 @@ foreground = ${colors.foreground}
 ;line-size = 4
 ;line-color = #f00
 ;line-color = ${colors.primary}
-border-size = 8
+border-size = 7
 border-color = #00000000
 
 padding-left = 1
@@ -49,11 +49,11 @@ module-margin-right = 2
 
 font-0 = font DejaVu Sans Mono Book:pixelsize=12;2
 font-1 = "Iosevka Nerd Font:pixelsize=16;3"
-font-2 = "Iosevka Nerd Font:style=Medium:size=24;5"
+font-2 = "Iosevka Nerd Font:style=Medium:size=16;3"
 
-modules-left = launcher i3 cpu temperature xwindow
-modules-center = 
-modules-right = backlight-acpi  pulseaudio  wlan eth  battery date powermenu
+modules-left = i3 cpu memory temperature xwindow
+modules-center =   
+modules-right = uptime backlight-acpi  pulseaudio  wlan eth  battery date powermenu
 
 ;tray-position = right
 ;tray-padding = 2

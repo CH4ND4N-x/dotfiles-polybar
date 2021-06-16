@@ -9,13 +9,13 @@ format = <label><bar>
 label =  %percentage%%
 label-background = ${colors.backlight}
 label-foreground = ${colors.black}
-label-padding = 2
+label-padding = 1
 
 bar-width = 10
 bar-indicator = ${bar.indicator}
 bar-indicator-foreground = ${colors.black}
 bar-indicator-background = ${colors.white}
-bar-indicator-font = 4
+bar-indicator-font = 3
 
 bar-fill = ${bar.fill}
 bar-fill-font = 2
@@ -44,11 +44,11 @@ format-connected = <label-connected>
 format-connected-background = ${colors.white}
 format-connected-foreground = ${colors.black}
 format-connected-prefix = 
-format-connected-prefix-padding = 2
+format-connected-prefix-padding = 1
 format-connected-prefix-background = ${colors.network}
 format-connected-prefix-foreground = ${colors.black}
 label-connected = "%{A1:networkmanager_dmenu &:}%essid% %{A}"
-label-connected-padding = 2
+label-connected-padding = 1
 
 format-disconnected = <label-disconnected>
 format-disconnected-background = ${colors.white}
@@ -56,13 +56,14 @@ format-disconnected-foreground = ${colors.black}
 format-disconnected-prefix = 睊
 format-disconnected-prefix-background = ${colors.network}
 format-disconnected-prefix-foreground = ${colors.black}
-format-disconnected-prefix-padding = 2
+format-disconnected-prefix-padding = 1
 label-disconnected = "%{A1:networkmanager_dmenu &:} Offline %{A}"
-label-discoonected-padding = 2
+label-discoonected-padding = 1
 
 [module/eth]
 type = internal/network
-interface = ${env:DEFAULT_NETWORK_INTERFACE}
+
+interface = ${env:Eth:wlo1}
 
 unknown-as-up = true
 
@@ -71,21 +72,21 @@ format-connected = <label-connected>
 format-connected-prefix =  
 format-connected-prefix-background = ${colors.eth}
 format-connected-prefix-foreground = ${colors.black}
-format-connected-prefix-padding = 2
+format-connected-prefix-padding = 1
 label-connected = %ifname%
 label-connected-background = ${colors.white}
 label-connected-foreground = ${colors.black}
-label-connected-padding = 2
+label-connected-padding = 1
 
 format-disconnected = <label-disconnected>
 format-disconnected-prefix = " "
 format-disconnected-prefix-background = ${colors.eth}
 format-disconnected-prefix-foreground = ${colors.black}
-format-disconnected-prefix-padding = 2
+format-disconnected-prefix-padding = 1
 label-disconnected = Offline
 label-disconnected-background = ${colors.white}
 label-disconnected-foreground = ${colors.black}
-label-disconnected-padding = 2
+label-disconnected-padding = 1
 [module/i3]
 type = internal/i3
 
@@ -114,7 +115,8 @@ label-mode-background = ${colors.workspace}
 
 label-unfocused = %icon%
 label-unfocused-padding = 2
-label-unfocused-background = ${colors.background}
+label-unfocused-background = ${colors.i3}
+label-unfocused-foreground = ${colors.white}
 ; focused = Active workspace on focused monitor
 label-focused = 
 ;label-focused-underline= ${colors.workspace}
@@ -128,9 +130,9 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 ; Separator in between workspaces
-;label-separator = |
-;label-separator-foreground = ${colors.black}
-;label-seprator-padding = 1
+label-separator = |
+label-separator-foreground = ${colors.black}
+label-seprator-padding = 2
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -141,17 +143,17 @@ format-volume = <label-volume><bar-volume>
 label-volume =  %percentage%%
 label-volume-foreground = ${colors.black}
 label-volume-background = ${colors.primary}
-label-volume-padding = 2
+label-volume-padding = 1
 
 format-muted = <label-muted>
 format-muted-prefix = 婢
 format-muted-prefix-background = ${colors.primary}
 format-muted-prefix-foreground = ${colors.black}
-format-muted-prefix-padding = 2
+format-muted-prefix-padding = 1
 label-muted = Muted
 label-muted-foreground = ${colors.black}
 label-muted-background = ${colors.white}
-label-muted-padding = 2
+label-muted-padding = 1
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -216,20 +218,20 @@ full-at = 98
 format-charging = <animation-charging><label-charging>
 label-charging-background = ${colors.white}
 label-charging-foreground= ${colors.black}
-label-charging-padding = 2
+label-charging-padding = 1
 
 format-discharging = <ramp-capacity><label-discharging>
 label-discharging-foreground = ${self.label-charging-foreground}
 label-discharging-background = ${self.label-charging-background}
-label-discharging-padding = 2
+label-discharging-padding = 1
 
 format-full =<label-full>
 label-full = 100%
 label-full-background = ${colors.white}
 label-full-foreground = ${colors.black}
-label-full-padding = 2
+label-full-padding = 1
 format-full-prefix = 
-format-full-prefix-padding = 2
+format-full-prefix-padding = 1
 format-full-prefix-background = ${colors.battery}
 format-full-prefix-foreground = ${colors.white}
 
@@ -241,7 +243,7 @@ ramp-capacity-3 = 
 ramp-capacity-4 = 
 ramp-capacity-foreground = ${colors.black}
 ramp-capacity-background = ${colors.battery}
-ramp-capacity-padding = 2
+ramp-capacity-padding = 1
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -250,24 +252,24 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-foreground = ${colors.black}
 animation-charging-background = ${colors.battery}
-animation-charging-padding = 2
+animation-charging-padding = 1
 
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 69
+warn-temperature = 70
 
 format = <ramp><label>
-format-warn = <ramp> <label-warn>
+format-warn = <ramp><label-warn>
 
 label = %temperature-c%
 label-background = ${colors.white}
 label-foreground = ${colors.black}
-label-padding = 2
-label-warn =%temperature-c%
+label-padding = 1
+label-warn = %temperature-c%
 label-warn-background = ${colors.alert}
 label-warn-foreground = ${colors.black}
-label-warn-padding = 2
+label-warn-padding = 1
 
 ramp-0 = 
 ramp-1 = 
@@ -276,7 +278,7 @@ ramp-3 = 
 ramp-4 = 
 ramp-foreground = ${colors.black}
 ramp-background = ${colors.temperature}
-ramp-padding = 2
+ramp-padding = 1
 
 [module/powermenu]
 type = custom/menu
@@ -284,13 +286,13 @@ type = custom/menu
 expand-right = true
 format-spacing = 1
 label-open = 
-label-open-padding = 2
+label-open-padding = 1
 label-open-background = ${colors.power}
 label-open-foreground = ${colors.black}
 label-close = 
 label-close-foreground = ${colors.black}
 label-close-background = ${colors.power}
-label-close-padding = 2
+label-close-padding = 1
 label-separator = |
 label-separator-foreground = ${colors.power}
 
@@ -307,7 +309,7 @@ content = 
 ;content" has the same properties as "format-NAME"
 content-background = ${colors.launcher}
 content-foreground = ${colors.black}
-content-padding = 2
+content-padding = 1
 ;click-(left|middle|right)" will be executed using "/usr/bin/env sh -c $CO>
 click-left = ~/.config/polybar/scripts/launcher.sh &
 
@@ -318,16 +320,16 @@ format = <label>
 format-prefix = 
 format-prefix-background = ${colors.xwindow}
 format-prefix-foreground = ${colors.black}
-format-prefix-padding = 2
+format-prefix-padding = 1
 
 label = %title:0:30:...%
 label-background = ${colors.white}
 label-foreground = ${colors.black}
-label-padding = 2
+label-padding = 1
 label-empty = "Desktop"
 label-empty-background = ${colors.white}
 label-empty-foreground = ${colors.black}
-label-empty-padding = 2
+label-empty-padding = 1
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -340,7 +342,7 @@ format-prefix-underline = ${colors.secondary}
 label-layout = %layout%
 label-layout-underline = ${colors.secondary}
 
-label-indicator-padding = 2
+label-indicator-padding = 1
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
@@ -363,23 +365,27 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = 
+format-prefix = 
+;
 format-prefix-background = ${colors.cpu}
 format-prefix-foreground = ${colors.black}
-format-prefix-padding = 2
+format-prefix-padding = 1
 label = %percentage:2%%
 label-background = ${colors.white}
 label-foreground = ${colors.black}
-label-padding = 2
+label-padding = 1
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.memory}
-format-underline = ${colors.memory}
+format-prefix = 
+format-prefix-background = ${colors.memory} 
+format-prefix-foreground = ${colors.black}
+format-prefix-padding = 1
 label = %percentage_used%%
-
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 1
 
 [module/date]
 type = internal/date
@@ -391,9 +397,9 @@ time-alt = " %a, %d %b %Y"
 format = <label>
 label-background = ${colors.white}
 label-foreground = ${colors.black}
-label-padding = 2
+label-padding = 1
 format-prefix = 
-format-prefix-padding = 2
+format-prefix-padding = 1
 format-prefix-foreground = ${colors.black}
 format-prefix-background = ${colors.date}
 label =%time%
@@ -413,4 +419,18 @@ format-prefix = " "
 format-underline = ${colors.primary}
 format-prefix-foreground = ${colors.primary}
 exec = /home/chandan/.config/polybar/scripts/music
+
+[module/uptime]
+type = custom/script 
+exec = uptime -p | cut -f 2- -d ' '
+interval = 100
+format = <label>
+format-prefix = 
+format-prefix-background = ${colors.uptime}
+format-prefix-foreground = ${colors.black}
+format-prefix-padding = 1
+label = %output%
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 1
 

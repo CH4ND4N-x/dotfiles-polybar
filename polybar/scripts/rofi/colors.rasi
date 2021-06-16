@@ -1,10 +1,10 @@
-/* colors */
+/* colors #BAFF66 #004D40FF #00897B*/
 
 * {
   al:    #00000000;
-  bg:    #0F1011;
-  bg1:   #00897B;
-  bg2:   #004D40FF;
-  bg3:   #43CD80;
+  bg:    #0F1011BF;
+  bg1:   #EA4141;
+  bg2:   #D04A4A;
+  bg3:   #EA4141;
   fg:    #FFFFFFFF;
 }
