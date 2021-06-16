@@ -2,8 +2,8 @@
 Dotfiles for my polybar setup
 
 # Screenshot: 
-![1](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/screenshots/screenshot-1.png)
-![2](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/screenshots/screenshot-2.png)
+![1](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/screenshots/screenshot-4.png)
+![2](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/screenshots/screenshot-3.png)
 
 ### Dependencies
 
