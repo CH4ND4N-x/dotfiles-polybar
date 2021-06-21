@@ -42,9 +42,9 @@ Clone the repo and cd into the directory
 $ git clone https://github.com/CH4ND4N-x/dotfiles-polybar.git
 $ cd dotfile-polybar
 ```
-Move the setup you want to use into .config folder
+Move/Copy the setup you want to use into .config folder
 ```bash
-$ mv <setup-name> ~/.config/polybar
+$ cp -r <setup-name>/polybar/* ~/.config/polybar
 $ cd ~/.config/polybar
 ```
 Give execute permission for launch.sh
