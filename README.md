@@ -1,9 +1,10 @@
 # dotfiles-polybar
 Dotfiles for my polybar setup
 
-# Screenshot: 
-![1](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/screenshots/screenshot-4.png)
-![2](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/screenshots/screenshot-3.png)
+# Setup - 1
+## Screenshot: 
+![1](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/polybar-1/screenshots/screenshot-4.png)
+![2](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/polybar-1/screenshots/screenshot-3.png)
 
 ### Dependencies
 
@@ -15,11 +16,36 @@ Dotfiles for my polybar setup
 ### Fonts
 - DejaVu Sans Mono
 - Iosevka Nerd Font
-### Running
-Clone the repo and move it to .config folder (or clone directly into .config folder)
+
+# Setup - 2
+## Screenshot: 
+![1](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/polybar-2/screenshots/screenshot-1.png)
+![2](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/polybar-2/screenshots/screenshot-2.png)
+
+### Dependencies
+
+- **`picom`** : for transprancy
+- **`Polybar`** : because it's a polybar setup
+- **`networkmanager-dmenu-git`** : For network manager dmenu
+- **`rofi`** : menu theame
+- **`playerctl`** : music control module(remove the module if you don't want to)
+- **`python > 3.0`** : music module
+
+### Fonts
+- DejaVu Sans Mono
+- Iosevka Nerd Font
+
+# Setup and Running
+Clone the repo and cd into the directory
 
 ```bash
 $ git clone https://github.com/CH4ND4N-x/dotfiles-polybar.git
+$ cd dotfile-polybar
+```
+Move the setup you want to use into .config folder
+```bash
+$ mv <setup-name> ~/.config/polybar
+$ cd ~/.config/polybar
 ```
 Give execute permission for launch.sh
 
@@ -32,6 +58,8 @@ Add the launch.sh script to your startup file
 ```bash
 $ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 ```
-### NOTE
-- if some random module is not working, better check module interface or simply ping me. Wallpaper is there in screenshot folder
+
+# NOTE
+- if for some random module is not working, better check module interface or simply ping me
+- Wallpapers are added to respective screenshots folder 
 - For i3, alacritty, picom , networkmanager-dmenu-git configs check [watch this repo](https://github.com/CH4ND4N-x/i3-backup.git)
