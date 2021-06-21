@@ -1,0 +1,437 @@
+[module/xbacklight]
+type = internal/xbacklight
+format = <ramp><label>
+label = %percentage%%
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 1
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+
+ramp-padding = 1
+ramp-background = ${colors.backlight}
+ramp-foreground = ${colors.black}
+
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+enable-scroll = true
+
+[module/wlan]
+type = internal/network
+interface = wlo1
+interval = 1.0
+;accumulate-stats = true
+unknown-as-up = true
+
+format-connected = <label-connected>
+format-connected-background = ${colors.white}
+format-connected-foreground = ${colors.black}
+format-connected-prefix = 
+format-connected-prefix-padding = 1
+format-connected-prefix-background = ${colors.network}
+format-connected-prefix-foreground = ${colors.black}
+label-connected = "%{A1:networkmanager_dmenu &:}%essid% %{A}"
+label-connected-padding = 1
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${colors.white}
+format-disconnected-foreground = ${colors.black}
+format-disconnected-prefix = 睊
+format-disconnected-prefix-background = ${colors.network}
+format-disconnected-prefix-foreground = ${colors.black}
+format-disconnected-prefix-padding = 1
+label-disconnected = "%{A1:networkmanager_dmenu &:} Offline %{A}"
+label-discoonected-padding = 1
+
+[module/eth]
+type = internal/network
+
+interface = ${env:Eth:wlo1}
+
+unknown-as-up = true
+
+interval = 3.0
+format-connected = <label-connected>
+format-connected-prefix =  
+format-connected-prefix-background = ${colors.eth}
+format-connected-prefix-foreground = ${colors.black}
+format-connected-prefix-padding = 1
+label-connected = %ifname%
+label-connected-background = ${colors.white}
+label-connected-foreground = ${colors.black}
+label-connected-padding = 1
+
+format-disconnected = <label-disconnected>
+format-disconnected-prefix = " "
+format-disconnected-prefix-background = ${colors.eth}
+format-disconnected-prefix-foreground = ${colors.black}
+format-disconnected-prefix-padding = 1
+label-disconnected = Offline
+label-disconnected-background = ${colors.white}
+label-disconnected-foreground = ${colors.black}
+label-disconnected-padding = 1
+[module/i3]
+type = internal/i3
+
+;ws-icon-0 = 1;1
+;ws-icon-1 = 2;2
+;ws-icon-2 = 3;3
+;ws-icon-3 = 4;4
+;ws-icon-4 = 5;5
+;ws-icon-5 = 6;6
+;ws-icon-6 = 7;7
+;ws-icon-7 = 8;8
+;ws-icon-8 = 9;9
+;ws-icon-9 = 10;10
+;ws-icon-default = 
+
+format = <label-state>
+index-sort = true
+wrapping-scroll = false
+
+;Only show workspaces on the same output as the bar
+;pin-workspaces = true
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.workspace}
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+label-unfocused-background = ${colors.white}
+label-unfocused-foreground = ${colors.i3}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.i3}
+label-focused-foreground = ${colors.white}
+label-focused-padding = 2
+
+;urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-foreground = ${colors.black}
+label-urgent-padding = 2
+
+label-visible = %index%
+label-visible-background = ${colors.white}
+label-visible-foreground = ${colors.black}
+label-visible-padding = 2
+
+; Separator in between workspaces
+label-separator = |
+label-separator-foreground = ${colors.black}
+label-seprator-padding = 2
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+use-ui-max = false
+
+format-volume = <ramp-volume><label-volume>
+
+label-volume = %percentage%%
+label-volume-foreground = ${colors.black}
+label-volume-background = ${colors.white}
+label-volume-padding = 1
+
+format-muted = <label-muted>
+format-muted-prefix = 婢
+format-muted-prefix-background = ${colors.primary}
+format-muted-prefix-foreground = ${colors.black}
+format-muted-prefix-padding = 1
+label-muted = Muted
+label-muted-foreground = ${colors.black}
+label-muted-background = ${colors.white}
+label-muted-padding = 1
+
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 墳
+ramp-volume-padding = 1
+ramp-volume-background = ${colors.primary}
+ramp-volume-foreground = ${colors.black}
+
+click-right = exec pavucontrol
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 98
+
+format-charging = <animation-charging><label-charging>
+label-charging-background = ${colors.white}
+label-charging-foreground= ${colors.black}
+label-charging-padding = 1
+
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging-foreground = ${self.label-charging-foreground}
+label-discharging-background = ${self.label-charging-background}
+label-discharging-padding = 1
+
+format-full =<label-full>
+label-full = 100%
+label-full-background = ${colors.white}
+label-full-foreground = ${colors.black}
+label-full-padding = 1
+format-full-prefix = 
+format-full-prefix-padding = 1
+format-full-prefix-background = ${colors.battery}
+format-full-prefix-foreground = ${colors.white}
+
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.black}
+ramp-capacity-background = ${colors.battery}
+ramp-capacity-padding = 1
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.black}
+animation-charging-background = ${colors.battery}
+animation-charging-padding = 1
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 70
+
+format = <ramp><label>
+format-warn = <ramp><label-warn>
+
+label = %temperature-c%
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 1
+label-warn = %temperature-c%
+label-warn-background = ${colors.alert}
+label-warn-foreground = ${colors.black}
+label-warn-padding = 1
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.black}
+ramp-background = ${colors.temperature}
+ramp-padding = 1
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+format-spacing = 1
+label-open = 
+label-open-padding = 1
+label-open-background = ${colors.power}
+label-open-foreground = ${colors.black}
+label-close = 
+label-close-foreground = ${colors.black}
+label-close-background = ${colors.power}
+label-close-padding = 1
+label-separator = |
+label-separator-foreground = ${colors.power}
+
+menu-0-0 =  reboot
+menu-0-0-exec = systemctl reboot
+menu-0-1 =  power off
+menu-0-1-exec = systemctl poweroff
+menu-0-0-underline = ${colors.power}
+menu-0-1-underline = ${colors.power}
+
+[module/launcher]
+type = custom/text
+content = 
+;content" has the same properties as "format-NAME"
+content-background = ${colors.launcher}
+content-foreground = ${colors.black}
+content-padding = 1
+;click-(left|middle|right)" will be executed using "/usr/bin/env sh -c $CO>
+click-left = ~/.config/polybar/scripts/launcher.sh &
+
+
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+format-prefix = 
+format-prefix-background = ${colors.xwindow}
+format-prefix-foreground = ${colors.black}
+format-prefix-padding = 1
+
+label = %title:0:30:...%
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 1
+label-empty = "Desktop"
+label-empty-background = ${colors.white}
+label-empty-foreground = ${colors.black}
+label-empty-padding = 1
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 1
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+format-mounted = <label-mounted>
+format-mounted-prefix = "  "
+format-mounted-prefix-foreground = ${colors.date}
+mount-0 = /home
+mount-1 = /
+label-mounted =  %mountpoint% : %percentage_used%%
+format-mounted-underline = ${colors.date}
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = 
+;
+format-prefix-background = ${colors.cpu}
+format-prefix-foreground = ${colors.black}
+format-prefix-padding = 1
+label = %percentage:2%%
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 1
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = 
+format-prefix-background = ${colors.memory} 
+format-prefix-foreground = ${colors.black}
+format-prefix-padding = 1
+label = %percentage_used%%
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 1
+
+[module/date]
+type = internal/date
+interval = 5
+
+time = " %I:%M %p"
+time-alt = " %a, %d %b %Y"
+
+format = <label>
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 1
+format-prefix = 
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.black}
+format-prefix-background = ${colors.date}
+label =%time%
+
+[module/sep]
+type = custom/text
+content = "|"
+content-foregoround = ${colors.secondary} 
+
+
+[module/uptime]
+type = custom/script 
+exec = uptime -p | cut -f 2- -d ' '
+interval = 100
+format = <label>
+format-prefix = 
+format-prefix-background = ${colors.uptime}
+format-prefix-foreground = ${colors.black}
+format-prefix-padding = 1
+label = %output%
+label-background = ${colors.white}
+label-foreground = ${colors.black}
+label-padding = 1
+
+[module/previous]
+type = custom/text
+content = 倫
+content-padding = 1
+content-background = #d2de40
+content-foreground = ${colors.black}
+click-left = exec playerctl previous &
+tail =  true
+
+[module/info]
+type = custom/script
+
+interval = 1
+exec = ~/.config/polybar/scripts/music
+
+format = <label>
+format-padding = 1
+format-background = #80000000
+
+label = %output%
+tail = true
+click-left = exec playerctl play-pause &
+
+[module/next]
+type = custom/text
+content = 淪
+content-padding = 1
+content-background = #d2de40
+content-foreground = ${colors.black}
+click-left = exec playerctl next
+tail = true
+

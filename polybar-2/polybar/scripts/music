@@ -1,0 +1,27 @@
+#! /usr/bin/python
+import time
+import subprocess
+
+font_index = 1
+update_delay = 0.3
+
+def get_title():
+    title = subprocess.run(["playerctl","metadata","--format","'{{title}}'"] , capture_output=True)
+    title = [x.decode("utf8") for x in title.stdout.split(b"\n") if len(x)]
+    return title
+
+def print_text(display_text):
+    
+    print("%%{T%d}" % (font_index) + display_text + " %{T-}", flush=True)
+
+def main():
+    while True:
+        time.sleep(update_delay)
+        title = get_title()
+        if title == []:
+            print_text("No Music Player")
+        else:
+            print_text(title[0][1:-1])
+
+if __name__ == "__main__":
+    main()
