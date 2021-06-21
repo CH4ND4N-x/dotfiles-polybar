@@ -44,7 +44,7 @@ $ cd dotfile-polybar
 ```
 Move/Copy the setup you want to use into .config folder
 ```bash
-$ cp -r <setup-name>/polybar/* ~/.config/polybar
+$ mv <setup-name>/polybar/* ~/.config/polybar
 $ cd ~/.config/polybar
 ```
 Give execute permission for launch.sh
