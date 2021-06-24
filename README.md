@@ -1,6 +1,31 @@
 # dotfiles-polybar
 Dotfiles for my polybar setup
 
+# Setup and Running
+Clone the repo and cd into the directory
+
+```bash
+$ git clone https://github.com/CH4ND4N-x/dotfiles-polybar.git
+$ cd dotfile-polybar
+```
+Move/Copy the setup you want to use into .config folder
+```bash
+$ mv <setup-name>/polybar/* ~/.config/polybar
+$ cd ~/.config/polybar
+```
+Give execute permission for launch.sh
+
+```bash
+$ chmod +x launch.sh
+```
+Add the launch.sh script to your startup file
+
+- for i3wm add this to config file
+```bash
+$ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+```
+
+
 # Setup - 1
 ## Screenshot: 
 ![1](https://github.com/CH4ND4N-x/dotfiles-polybar/blob/master/polybar-1/screenshots/screenshot-4.png)
@@ -35,29 +60,8 @@ Dotfiles for my polybar setup
 - DejaVu Sans Mono
 - Iosevka Nerd Font
 
-# Setup and Running
-Clone the repo and cd into the directory
-
-```bash
-$ git clone https://github.com/CH4ND4N-x/dotfiles-polybar.git
-$ cd dotfile-polybar
-```
-Move/Copy the setup you want to use into .config folder
-```bash
-$ mv <setup-name>/polybar/* ~/.config/polybar
-$ cd ~/.config/polybar
-```
-Give execute permission for launch.sh
-
-```bash
-$ chmod +x launch.sh
-```
-Add the launch.sh script to your startup file
-
-- for i3wm add this to config file
-```bash
-$ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-```
+# backgrounds 
+- [Here](https://github.com/CH4ND4N-x/backgrounds)
 
 # NOTE
 - if for some random module is not working, better check module interface or simply ping me
